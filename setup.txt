@@ -1,0 +1,18 @@
+
+Requirements to setup the project
+
+Ensure you have node setup on your local machine
+
+further to setup this project install the following dependencies
+
+ - npm install express axios
+
+ - npm install --save-dev jest supertest nodemon
+
+ Node Setup Guide
+
+    npm install
+    npm run dev
+
+To run Tests
+    npm test    
