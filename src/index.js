@@ -13,10 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 const MONDAY_API_URL = 'https://api.monday.com/v2';
 const MONDAY_API_TOKEN = '<DUMMY-TOKEN>';
 
-
-
-// POST endpoint to receive HubSpot webhook
-app.post('/hubspot-webhook',authorizeToken, async (req, res) => {
+const handler = async (req, res) => {
   
   // Optional: JWT verify here
   // const decoded = jwt.verify(token, secretKey)
@@ -68,10 +65,15 @@ app.post('/hubspot-webhook',authorizeToken, async (req, res) => {
     // Retry logic can be implemented here
     return res.status(500).json({ error: 'Failed to process webhook.' });
   }
-});
+}
+
+
+// POST endpoint to receive HubSpot webhook
+app.post('/hubspot-webhook',authorizeToken, handler);
 
 
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+module.exports = { handler: handler };
