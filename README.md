@@ -55,7 +55,7 @@ if (await isEventProcessed(eventId)) {
 If not processed, mark event ID as processing 
 Ensure the eventId is updated in the database and marked as done
 
-# How will we handle API rate limmits effectively
+# How will we handle API rate limits effectively
 
 To handle API rate limits effectively our service must detect and respond to continuous
 requests by either slowing down, retrying or queing the requests
