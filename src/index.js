@@ -1,31 +1,26 @@
-// Import the express module
+
 const express = require('express');
 const axios = require('axios');
-const fetch = require('node-fetch');
-const bodyParser = require('body-parser');
-// Create an express application
-const app = express();
+const authorizeToken = require('../middleware/auth');
 
-// Define the port
+const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Middleware
-app.use(bodyParser.json());
+
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true }));
 
 const MONDAY_API_URL = 'https://api.monday.com/v2';
 const MONDAY_API_TOKEN = '<DUMMY-TOKEN>';
 
 
 
-// Define a basic route
-// app.get('/', (req, res) => {
-//   res.send('Hello World!');
-// });
-
 // POST endpoint to receive HubSpot webhook
-app.post('/hubspot-webhook', async (req, res) => {
+app.post('/hubspot-webhook',authorizeToken, async (req, res) => {
+  
+  // Optional: JWT verify here
+  // const decoded = jwt.verify(token, secretKey)
   try {
-    // JWT verification would occur here
 
     const payload = req.body;
 
