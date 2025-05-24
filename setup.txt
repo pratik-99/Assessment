@@ -9,7 +9,7 @@ further to setup this project install the following dependencies
 
  - npm install --save-dev jest supertest nodemon
 
- Node Setup Guide
+Node Setup Guide
 
     npm install
     npm run dev
